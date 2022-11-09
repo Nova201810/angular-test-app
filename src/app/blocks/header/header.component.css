@@ -1,0 +1,40 @@
+:host {
+  position: relative;
+  z-index: 10;
+  padding: 24px var(--padding-main-x-320);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: var(--color-green);
+  box-shadow: rgb(0 0 0 / 15%) 1.95px 1.95px 2.6px;
+}
+
+.app-header__navigation {
+  display: flex;
+}
+
+.app-header__navigation > * {
+  margin-left: 40px;
+}
+
+.app-header__navigation > *:first-child {
+  margin-left: 0;
+}
+
+.app-header__status {
+  color: #000000;
+  font-size: 20px;
+  line-height: 24px;
+}
+
+@media(min-width: 768px) {
+  :host {
+    padding: 24px var(--padding-main-x-768);
+  }
+}
+
+@media(min-width: 1024px) {
+  :host {
+    padding: 24px var(--padding-main-x-1024);
+  }
+}

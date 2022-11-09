@@ -1,0 +1,37 @@
+<div class="app-task__header">
+  <div class="app-task__header_title">{{ task.title }}</div>
+  <button custom-button [kind]="'borderless'" (click)="onDelete()" class="app-task__header_close-button">
+    <img src="assets/close.svg">
+  </button>
+</div>
+<p class="app-task__content">
+  <ng-content></ng-content>
+</p>
+<div class="app-task__actions">
+  <div>
+    <button class="app-task__actions_button" custom-button [kind]="'primary'" [vertSize]="40" (click)="onShowModal()">Редактировать</button>
+  </div>
+  <div class="app-task__actions_spacer"></div>
+  <label class="app-task__actions_selector">
+    <span class="app-task__actions_selector-label">
+      Статус:
+    </span>
+    <select custom-select [vertSize]="40" (change)="onStatusChange($event)">
+      <option
+        *ngFor="let status of statuses"
+        [value]="status.value"
+        [selected]="status.value === task.status"
+      >
+        {{ status.name }}
+      </option>
+    </select>
+  </label>
+</div>
+<app-task-modal
+  [isModalVisible]="isModalVisible"
+  [heading]="'Редактирование задачи'"
+  [task]="task"
+  (onHide)="onHideModal()"
+  (onSave)="onUpdate($event)"
+>
+</app-task-modal>

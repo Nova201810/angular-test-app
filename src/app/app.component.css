@@ -1,0 +1,48 @@
+:host {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  font-family: 'Open Sans', sans-serif;
+
+  --padding-main-x-320: 16px;
+  --padding-main-x-768: 24px;
+  --padding-main-x-1024: 32px;
+
+  --color-green: #7adb6e;
+  --color-blue: #9fd2e3;
+  --color-blue-medium: #5d9eb4;
+  --color-blue-dark: #003b4f;
+  --color-blue-link: #007ea9;
+  --color-red-dark: #740000;
+  --color-red-transparency: #74000080;
+  --color-white: #ffffff;
+  --color-gray-30: #0000004d;
+  --color-gray-70: #4b4b4b;
+  
+  --color-status-done: #00b107;
+  --color-status-progress: #0019b1;
+  --color-status-paused: #b1a600;
+  --color-status-canceled: #b10000;
+  --color-status-created: #929292;
+
+  --box-shadow-outline: 0 0 0 3px var(--color-red-transparency);
+  --box-shadow-default: rgba(0, 0, 0, 0.25) 0px 14px 28px, rgba(0, 0, 0, 0.22) 0px 10px 10px;
+}
+
+.app-content {
+  padding: 24px var(--padding-main-x-320);
+  background: var(--color-blue);
+  flex-grow: 1;
+}
+
+@media (min-width: 768px) {
+  .app-content {
+    padding: 32px var(--padding-main-x-768);
+  }
+}
+
+@media (min-width: 1024px) {
+  .app-content {
+    padding: 40px var(--padding-main-x-1024);
+  }
+}

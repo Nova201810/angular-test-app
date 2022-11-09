@@ -1,0 +1,20 @@
+<div class="app-tasks__header">
+  <h1 class="app-tasks__header_text">Список задач</h1>
+</div> 
+<div class="app-tasks__list">
+  <app-task *ngFor="let task of tasks" [task]="task" (updateTask)="updateTask($event)" (deleteTask)="deleteTask($event)">
+    {{ task.description }}
+  </app-task>
+  <div *ngIf="!tasks.length" class="app-tasks__list--empty">
+    Список задач пуст
+  </div>
+</div>
+<div class="app-tasks__actions">
+  <button custom-button [kind]="'primary'" [vertSize]="48" (click)="showModal()">Добавить задачу</button>
+</div>
+<app-task-modal
+  [isModalVisible]="isModalVisible"
+  [heading]="'Новая задача'"
+  (onHide)="hideModal()"
+  (onSave)="createTask($event)"
+></app-task-modal>

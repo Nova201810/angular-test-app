@@ -1,0 +1,11 @@
+<div class="app-modal__block">
+  <div class="app-modal__header">
+    <div class="app-modal__header_title">{{ heading }}</div>
+    <button custom-button [kind]="'borderless'" (click)="hide()" class="app-modal__header_close-button close-button">
+      <img src="assets/close.svg">
+    </button>
+  </div>
+  <div class="app-modal__content">
+    <ng-content></ng-content>
+  </div>
+</div>

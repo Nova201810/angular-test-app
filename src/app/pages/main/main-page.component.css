@@ -1,0 +1,121 @@
+.main-page__header {
+  text-align: center;
+}
+
+.main-page__header_text {
+  margin-bottom: 40px;
+  color: var(--color-blue-dark);
+  display: inline-block;
+  border-bottom: 1px solid var(--color-blue-medium);
+}
+
+.main-page__tasks-empty {
+  font-size: 24px;
+  line-height: 28px;
+  font-weight: 600;
+  color: var(--color-blue-dark);
+  text-align: center;
+}
+
+.main-page__tasks-empty_link {
+  color: var(--color-blue-link);
+}
+
+.main-page__tasks_header {
+  margin-bottom: 24px;
+  display: flex;
+  justify-content: center;
+}
+
+.main-page__block {
+  padding: 16px 32px;
+  background: var(--color-white);
+  border: 1px solid var(--color-blue-medium);
+  border-radius: 8px;
+  display: inline-block;
+}
+
+.main-page__tasks_info-point {
+  margin-bottom: 24px;
+}
+
+.main-page__tasks_info-point:last-child {
+  margin-bottom: 0;
+}
+
+.main-page__tasks_info-point-label {
+  font-weight: 600;
+  font-size: 18px;
+  line-height: 22px;
+}
+
+.main-page__task-status {
+  margin-top: 12px;
+  display: flex;
+  align-items: center;
+}
+
+.main-page__task-status-marker {
+  margin-right: 4px;
+  width: 16px;
+  height: 16px;
+  border: 1px solid var(--color-gray-30);
+}
+
+.main-page__task-status-marker--done {
+  background-color: var(--color-status-done);
+}
+
+.main-page__task-status-marker--created {
+  background-color: var(--color-status-created);
+}
+
+.main-page__task-status-marker--canceled {
+  background-color: var(--color-status-canceled);
+}
+
+.main-page__task-status-marker--paused {
+  background-color: var(--color-status-paused);
+}
+
+.main-page__task-status-marker--progress {
+  background-color: var(--color-status-progress);
+}
+
+.main-page__tasks_tasks-graph {
+  --created-end: var(--created-percent);
+  --progress-end: calc(var(--created-end) + var(--progress-percent));
+  --paused-end: calc(var(--progress-end) + var(--paused-percent));
+  --done-end: calc(var(--paused-end) + var(--done-percent));
+  position: relative;
+  width: 280px;
+  height: 280px;
+  border-radius: 50%;
+  border: 1px solid var(--color-gray-70);
+  background-image: conic-gradient(
+    var(--color-status-created) var(--created-end),
+    var(--color-status-progress) var(--created-end) var(--progress-end),
+    var(--color-status-paused) var(--progress-end) var(--paused-end),
+    var(--color-status-done) var(--paused-end) var(--done-end),
+    var(--color-status-canceled) var(--done-end)
+  );
+}
+
+.main-page__tasks_tasks-graph::after {
+  --tasks-graph-width: calc(100% / 3);
+  content: var(--tasks-count);
+  border: 1px solid var(--color-gray-70);
+  position: absolute;
+  top: var(--tasks-graph-width);
+  bottom: var(--tasks-graph-width);
+  left: var(--tasks-graph-width);
+  right: var(--tasks-graph-width);
+  background: var(--color-white);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 24px;
+  line-height: 26px;
+  font-weight: 600;
+}

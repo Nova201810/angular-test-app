@@ -1,0 +1,16 @@
+.app-header-link {
+  text-decoration: none;
+  font-size: 24px;
+  line-height: 28px;
+  color: var(--color-blue-dark);
+}
+
+.app-header-link.active {
+  color: var(--color-red-dark);
+  text-decoration: overline;
+}
+
+.app-header-link:focus {
+  outline: none;
+  box-shadow: var(--box-shadow-outline);
+}

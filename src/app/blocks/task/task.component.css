@@ -1,0 +1,78 @@
+:host {
+  border-radius: 16px;
+  box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
+  background: linear-gradient(0, transparent 99%, var(--color-blue-dark));
+  padding: 16px;
+  border: 1px solid var(--color-blue-medium);
+}
+
+.app-task__header {
+  display: flex;
+  justify-content: space-between;
+}
+
+.app-task__header_title {
+  font-weight: 700;
+  font-size: 24px;
+  line-height: 28px;
+}
+
+.app-task__header_close-button {
+  margin-left: 16px;
+  width: 20px;
+  height: 20px;
+}
+
+.app-task__content {
+  padding: 24px 0 32px;
+  margin: 0;
+  border-bottom: 1px solid var(--color-blue-medium);
+}
+
+.app-task__actions {
+  padding-top: 16px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.app-task__actions_button {
+  width: 100%;
+}
+
+.app-task__actions_spacer {
+  padding: 12px;
+}
+
+.app-task__actions_selector {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin-left: auto;
+}
+
+.app-task__actions_selector-label {
+  margin-right: 8px;
+}
+
+@media(min-width: 768px) {
+  .app-task__actions_spacer {
+    padding: 8px;
+  }
+
+  .app-task__actions_selector {
+    flex-direction: column;
+    align-items: baseline;
+  }
+
+  .app-task__actions_selector-label {
+    margin-right: 0;
+    margin-bottom: 4px;
+  }
+
+  .app-task__actions {
+    padding-top: 8px;
+    flex-direction: row;
+    align-items: end;
+  }
+}

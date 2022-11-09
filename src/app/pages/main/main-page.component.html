@@ -1,0 +1,40 @@
+<div>
+  <div class="main-page__header">
+    <h1 class="main-page__header_text">Информация о задачах</h1>
+  </div>
+  <div *ngIf="!tasks.list.length" class="main-page__tasks-empty">
+    У вас нет ни одной задачи. Перейдите в раздел <a routerLink="tasks" class="main-page__tasks-empty_link">задачи</a> чтобы создать.
+  </div>
+  <div *ngIf="!!tasks.list.length" class="main-page__tasks main-page__block">
+    <h2 class="main-page__tasks_header">Статусы задач</h2>
+    <div class="main-page__tasks_info">
+      <div
+        class="main-page__tasks_tasks-graph main-page__tasks_info-point"
+        style="--tasks-count: '{{ tasks.list.length }}'; --created-percent: {{ (tasks.created.length / tasks.list.length) * 100 }}%; --progress-percent: {{ (tasks.progress.length / tasks.list.length) * 100 }}%; --paused-percent: {{ (tasks.paused.length / tasks.list.length) * 100 }}%; --done-percent: {{ (tasks.done.length / tasks.list.length) * 100 }}%; --canceled-percent: {{ (tasks.canceled.length / tasks.list.length) * 100 }}%;"
+      >
+      </div>
+      <div class="main-page__tasks_info-point">
+        <div class="main-page__task-status">
+          <span class="main-page__task-status-marker main-page__task-status-marker--created"></span>
+          (открыто): {{ tasks.created.length }}
+        </div>
+        <div class="main-page__task-status">
+          <span class="main-page__task-status-marker main-page__task-status-marker--progress"></span>
+          (в процессе): {{ tasks.progress.length }}
+        </div>
+        <div class="main-page__task-status">
+          <span class="main-page__task-status-marker main-page__task-status-marker--paused"></span>
+          (на паузе): {{ tasks.paused.length }}
+        </div>
+        <div class="main-page__task-status">
+          <span class="main-page__task-status-marker main-page__task-status-marker--done"></span>
+          (выполнено): {{ tasks.done.length }}
+        </div>
+        <div class="main-page__task-status">
+          <span class="main-page__task-status-marker main-page__task-status-marker--canceled"></span>
+          (отменено): {{ tasks.canceled.length }}
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

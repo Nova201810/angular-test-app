@@ -1,0 +1,26 @@
+<app-modal *ngIf="isModalVisible" [heading]="heading" (onHide)="handleHide()">
+  <form [formGroup]="form" class="task-modal">
+    <div class="task-modal__fields">
+      <div class="task-modal__fields_item">
+        <div custom-error *ngIf="getFieldError('title')">{{getFieldErrorText('title')}}</div>
+        <input custom-field [error]="getFieldError('title')" formControlName="title" [placeholder]="FIELD_NAMES['title']" />
+      </div>
+      <div class="task-modal__fields_item">
+        <div custom-error *ngIf="getFieldError('description')">{{getFieldErrorText('description')}}</div>
+        <textarea custom-field [error]="getFieldError('description')" formControlName="description" [placeholder]="FIELD_NAMES['description']"></textarea>
+      </div>
+      <div class="task-modal__fields_item">
+        <div custom-error *ngIf="getFieldError('content')">{{getFieldErrorText('content')}}</div>
+        <textarea custom-field [error]="getFieldError('content')" formControlName="content" [placeholder]="FIELD_NAMES['content']"></textarea>
+      </div>
+    </div>
+    <div class="task-modal__actions">
+      <button class="task-modal__actions_button-primary" custom-button [kind]="'primary'" [vertSize]="40" (click)="handleSave()">
+        {{ task ? 'Обновить' : 'Создать' }}
+      </button>
+      <button *ngIf="task" class="task-modal__actions_button-secondary" custom-button [kind]="'secondary'" [vertSize]="40" (click)="handleHide()">
+        Отменить
+      </button>
+    </div>
+  </form>
+</app-modal>
