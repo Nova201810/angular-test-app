@@ -1,12 +1,6 @@
-export enum TASK_STATUS {
-  CREATED = 'created',
-  PROGRESS = 'progress',
-  PAUSED = 'paused',
-  CANCELED = 'canceled',
-  DONE = 'done',
-};
+import { TASK_STATUS } from "../@types/tasks";
 
-export const TASK_STATUS_NAME = {
+export const TASK_STATUS_NAMES = {
   [TASK_STATUS.CREATED]: 'Открыто',
   [TASK_STATUS.PROGRESS]: 'В процессе',
   [TASK_STATUS.PAUSED]: 'На паузе',

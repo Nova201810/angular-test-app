@@ -1,6 +1,7 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 
 import { TasksService, Task } from '../../services/tasks/tasks.service';
+import { TASK_STATUS } from '../../@types/tasks';
 
 type TasksInfo = {
   list: Task[];
@@ -11,18 +12,27 @@ type TasksInfo = {
   templateUrl: './main-page.component.html',
   styleUrls: ['./main-page.component.css'],
 })
-export class MainPageComponent {
-  tasks: TasksInfo;
+export class MainPageComponent implements OnInit {
+  tasks?: TasksInfo;
+  statuses;
 
   constructor(private tasksService: TasksService) {
-    const list = tasksService.getTasks();
-    this.tasks = {
-      list,
-      done: list.filter(({ status }) => status === 'done'),
-      created: list.filter(({ status }) => status === 'created'),
-      canceled: list.filter(({ status }) => status === 'canceled'),
-      paused: list.filter(({ status }) => status === 'paused'),
-      progress: list.filter(({ status }) => status === 'progress'),
-    };
+    this.statuses = TASK_STATUS;
+  }
+
+  ngOnInit(): void {
+    let list: TasksInfo['list'] = [];
+    this.tasksService.getTasks()
+      .subscribe(tasks => {
+        list = tasks;
+        this.tasks = {
+          list,
+          done: list.filter(({ status }) => status === 'done'),
+          created: list.filter(({ status }) => status === 'created'),
+          canceled: list.filter(({ status }) => status === 'canceled'),
+          paused: list.filter(({ status }) => status === 'paused'),
+          progress: list.filter(({ status }) => status === 'progress'),
+        };
+      });
   }
 }

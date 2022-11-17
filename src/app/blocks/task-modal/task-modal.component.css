@@ -23,6 +23,13 @@
   margin-top: 0;
 }
 
+.task-modal__fields_item-title {
+  font-size: 22px;
+  line-height: 26px;
+  font-weight: 600;
+  margin-bottom: 12px;
+}
+
 .task-modal__actions {
   display: flex;
   flex-direction: column;
@@ -31,7 +38,7 @@
 }
 
 .task-modal__actions_button-secondary {
-  margin-top: 24px;
+  margin-top: 20px;
 }
 
 @media(min-width: 768px) {

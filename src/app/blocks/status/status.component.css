@@ -1,0 +1,30 @@
+:host {
+  display: flex;
+}
+
+.status-marker {
+  margin-right: 4px;
+  width: 16px;
+  height: 16px;
+  border: 1px solid var(--color-gray-30);
+}
+
+.status-marker--done {
+  background-color: var(--color-status-done);
+}
+
+.status-marker--created {
+  background-color: var(--color-status-created);
+}
+
+.status-marker--canceled {
+  background-color: var(--color-status-canceled);
+}
+
+.status-marker--paused {
+  background-color: var(--color-status-paused);
+}
+
+.status-marker--progress {
+  background-color: var(--color-status-progress);
+}

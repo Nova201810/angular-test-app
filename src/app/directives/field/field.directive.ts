@@ -8,20 +8,22 @@ import { Directive, ElementRef, Input, Renderer2, OnInit, OnChanges, SimpleChang
   },
 })
 export class FieldDirective implements OnInit, OnChanges {
-  @Input() error = false;
+  @Input() vertSize: 32 | 40 | 48 | 56 = 32;
+  @Input() error?: boolean = false;
+  private lineHeight = 20;
+  private borderWidth = 1;
 
   constructor(public elementRef: ElementRef, public renderer: Renderer2) {}
 
   updateStylesOnError() {
     if (this.error) {
       this.setStyles({
-        'border': `1px solid var(--color-red-dark)`,
+        'border': `${this.borderWidth}px solid var(--color-red-dark)`,
       });
     } else {
       this.setStyles({
-        'border': `1px solid var(--color-gray-30)`,
+        'border': `${this.borderWidth}px solid var(--color-gray-30)`,
       });
-      this.renderer.setStyle
     }
   }
 
@@ -29,16 +31,16 @@ export class FieldDirective implements OnInit, OnChanges {
     this.setStyles({
       'border-radius': '4px',
       'font-size': '16px',
-      'line-height': `20px`,
+      'line-height': `${this.lineHeight}px`,
       'font-family': `'Open Sans', sans-serif`,
       'outline': 'none',
-      'padding': `10px`,
+      'padding': `${(this.vertSize - this.lineHeight) / 2 - this.borderWidth}px 8px`,
     });
     this.updateStylesOnError();
   }
 
   ngOnChanges(changes: SimpleChanges): void {
-    this.error = changes['error'].currentValue;
+    this.error = changes['error']?.currentValue;
     this.updateStylesOnError();
   }
 

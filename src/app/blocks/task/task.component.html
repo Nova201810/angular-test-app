@@ -9,14 +9,14 @@
 </p>
 <div class="app-task__actions">
   <div>
-    <button class="app-task__actions_button" custom-button [kind]="'primary'" [vertSize]="40" (click)="onShowModal()">Редактировать</button>
+    <button class="app-task__actions_button" custom-button [kind]="'primary'" [vertSize]="40" (click)="onShowModal()">Посмотреть</button>
   </div>
   <div class="app-task__actions_spacer"></div>
   <label class="app-task__actions_selector">
     <span class="app-task__actions_selector-label">
       Статус:
     </span>
-    <select custom-select [vertSize]="40" (change)="onStatusChange($event)">
+    <select custom-field [vertSize]="40" (change)="onStatusChange($event)">
       <option
         *ngFor="let status of statuses"
         [value]="status.value"

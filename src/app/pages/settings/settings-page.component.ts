@@ -1,15 +1,29 @@
 import { Component, OnInit } from '@angular/core';
 
+import { Settings } from '../../@types/settings';
+import { SettingsService } from '../../services/settings/settings.service';
+
 @Component({
   selector: 'app-settings',
   templateUrl: './settings-page.component.html',
   styleUrls: ['./settings-page.component.css']
 })
 export class SettingsPageComponent implements OnInit {
+  settings?: Settings;
 
-  constructor() { }
+  constructor(private settingsService: SettingsService) {}
 
   ngOnInit(): void {
+    this.settingsService.getSettings()
+      .subscribe((settings) => {
+        this.settings = settings;
+      });
   }
 
+  updateSetting(field: keyof Settings) {
+    return (value: Settings[keyof Settings]) => {
+      this.settings![field] = value;
+      this.settingsService.updateSetting({ field, value });
+    };
+  }
 }

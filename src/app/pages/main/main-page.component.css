@@ -1,12 +1,11 @@
 .main-page__header {
-  text-align: center;
+  border-bottom: 1px solid var(--color-blue-medium);
+  padding-bottom: 16px;
+  margin-bottom: 56px;
 }
 
 .main-page__header_text {
-  margin-bottom: 40px;
   color: var(--color-blue-dark);
-  display: inline-block;
-  border-bottom: 1px solid var(--color-blue-medium);
 }
 
 .main-page__tasks-empty {
@@ -21,65 +20,33 @@
   color: var(--color-blue-link);
 }
 
-.main-page__tasks_header {
-  margin-bottom: 24px;
+.main-page__tasks {
+  margin-right: auto;
+  margin-left: auto;
+  max-width: 600px;
   display: flex;
-  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  justify-content: space-between;
 }
 
-.main-page__block {
-  padding: 16px 32px;
-  background: var(--color-white);
-  border: 1px solid var(--color-blue-medium);
-  border-radius: 8px;
-  display: inline-block;
+.main-page__tasks_info {
+  width: 280px;
+  margin-top: 40px;
 }
 
-.main-page__tasks_info-point {
-  margin-bottom: 24px;
-}
-
-.main-page__tasks_info-point:last-child {
-  margin-bottom: 0;
-}
-
-.main-page__tasks_info-point-label {
+.main-page__tasks_info-label {
+  font-size: 22px;
+  line-height: 24px;
+  color: var(--color-blue-dark);
   font-weight: 600;
-  font-size: 18px;
-  line-height: 22px;
+  margin-bottom: 24px;
 }
 
 .main-page__task-status {
-  margin-top: 12px;
+  margin-top: 16px;
   display: flex;
   align-items: center;
-}
-
-.main-page__task-status-marker {
-  margin-right: 4px;
-  width: 16px;
-  height: 16px;
-  border: 1px solid var(--color-gray-30);
-}
-
-.main-page__task-status-marker--done {
-  background-color: var(--color-status-done);
-}
-
-.main-page__task-status-marker--created {
-  background-color: var(--color-status-created);
-}
-
-.main-page__task-status-marker--canceled {
-  background-color: var(--color-status-canceled);
-}
-
-.main-page__task-status-marker--paused {
-  background-color: var(--color-status-paused);
-}
-
-.main-page__task-status-marker--progress {
-  background-color: var(--color-status-progress);
 }
 
 .main-page__tasks_tasks-graph {
@@ -91,7 +58,7 @@
   width: 280px;
   height: 280px;
   border-radius: 50%;
-  border: 1px solid var(--color-gray-70);
+  border: 1px solid var(--color-blue-dark);
   background-image: conic-gradient(
     var(--color-status-created) var(--created-end),
     var(--color-status-progress) var(--created-end) var(--progress-end),
@@ -104,13 +71,14 @@
 .main-page__tasks_tasks-graph::after {
   --tasks-graph-width: calc(100% / 3);
   content: var(--tasks-count);
-  border: 1px solid var(--color-gray-70);
+  border: 1px solid var(--color-blue-dark);
   position: absolute;
   top: var(--tasks-graph-width);
   bottom: var(--tasks-graph-width);
   left: var(--tasks-graph-width);
   right: var(--tasks-graph-width);
-  background: var(--color-white);
+  background: var(--color-blue);
+  color: var(--color-blue-dark);
   border-radius: 50%;
   display: flex;
   align-items: center;
@@ -118,4 +86,19 @@
   font-size: 24px;
   line-height: 26px;
   font-weight: 600;
+}
+
+@media(min-width: 768px) {
+  .main-page__header {
+    margin-bottom: 80px;
+  }
+
+  .main-page__tasks {
+    align-items: center;
+    flex-direction: row-reverse;
+  }
+
+  .main-page__tasks_info {
+    margin-top: 0;
+  }
 }

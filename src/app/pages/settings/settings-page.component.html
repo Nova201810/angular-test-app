@@ -1,1 +1,26 @@
-<p>SETTINGS</p>
+<div class="settings-page__header">
+  <h1 class="settings-page__header_text">Настройки задач</h1>
+</div>
+<div class="settings-page__content">
+  <div *ngIf="!settings">Загрузка...</div>
+  <div *ngIf="!!settings">
+    <label class="settings-page__content_switcher-item">
+      <span class="settings-page__content_switcher-item-label">
+        Подтверждать удаление задачи:
+      </span>
+      <app-switcher
+        [selected]="settings.showDeleteTaskMessage"
+        (selectedChange)="updateSetting('showDeleteTaskMessage')($event)"
+      ></app-switcher>
+    </label>
+    <label class="settings-page__content_switcher-item">
+      <span class="settings-page__content_switcher-item-label">
+        Автоматически устанавливать статус при создании задачи:
+      </span>
+      <app-switcher
+        [selected]="settings.setDefaultStatusOnCreateTask"
+        (selectedChange)="updateSetting('setDefaultStatusOnCreateTask')($event)"
+      ></app-switcher>
+    </label>
+  </div>
+</div>

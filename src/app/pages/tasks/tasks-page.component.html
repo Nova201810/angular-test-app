@@ -1,18 +1,46 @@
 <div class="app-tasks__header">
-  <h1 class="app-tasks__header_text">Список задач</h1>
-</div> 
-<div class="app-tasks__list">
-  <app-task *ngFor="let task of tasks" [task]="task" (updateTask)="updateTask($event)" (deleteTask)="deleteTask($event)">
+  <h1 class="app-tasks__header_title">Список задач</h1>
+  <div class="app-tasks__actions">
+    <div class="app-tasks__actions_control">
+      <button [disabled]="!settings" class="app-tasks__actions_create-button" custom-button [kind]="'primary'" [vertSize]="48" (click)="showModal()">Создать задачу</button>
+    </div>
+    <div class="app-tasks__actions_spacer"></div>
+    <div class="app-tasks__actions_control">
+      <label class="app-tasks__actions_selector">
+        <span class="app-tasks__actions_selector-label">
+          Фильтр:
+        </span>
+        <select class="app-tasks__actions_selector-control" custom-field [vertSize]="48" (change)="onStatusChange($event)">
+          <option
+            *ngFor="let status of statuses"
+            [value]="status.value"
+            [selected]="status.value === filterStatusValue"
+          >
+            {{ status.name }}
+          </option>
+        </select>
+      </label>
+    </div>
+  </div>
+</div>
+<div *ngIf="!(settings && tasks)" class="app-tasks__loader">Загрузка...</div>
+<div *ngIf="!!(settings && tasks)" class="app-tasks__list">
+  <app-task
+    *ngFor="let task of tasks | filter: (filterStatusValue !== 'all' && { status: filterStatusValue })"
+    [task]="task"
+    [showDeleteTaskMessage]="settings.showDeleteTaskMessage"
+    (updateTask)="updateTask($event)"
+    (deleteTask)="deleteTask($event)"
+  >
     {{ task.description }}
   </app-task>
   <div *ngIf="!tasks.length" class="app-tasks__list--empty">
     Список задач пуст
   </div>
 </div>
-<div class="app-tasks__actions">
-  <button custom-button [kind]="'primary'" [vertSize]="48" (click)="showModal()">Добавить задачу</button>
-</div>
 <app-task-modal
+  *ngIf="!!(settings && tasks)"
+  [setDefaultStatusOnCreateTask]="settings.setDefaultStatusOnCreateTask"
   [isModalVisible]="isModalVisible"
   [heading]="'Новая задача'"
   (onHide)="hideModal()"

@@ -1,0 +1,32 @@
+.app-switcher {
+  cursor: pointer;
+  position: relative;
+  border: 1px solid var(--color-gray-30);
+  background: var(--color-white);
+  border-radius: 16px;
+  width: 72px;
+  height: 32px;
+  transition: all .25s;
+}
+
+.app-switcher::after {
+  content: '';
+  position: absolute;
+  top: 2px;
+  left: 2px;
+  background: var(--color-white);
+  border: 1px solid var(--color-gray-30);
+  height: 24px;
+  width: 24px;
+  border-radius: 50%;
+}
+
+.app-switcher--checked {
+  background: var(--color-green-medium);
+  transition: all .25s;
+}
+
+.app-switcher--checked::after {
+  left: initial;
+  right: 2px;
+}

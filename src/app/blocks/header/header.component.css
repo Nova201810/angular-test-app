@@ -1,5 +1,6 @@
 :host {
-  position: relative;
+  position: sticky;
+  top: 0;
   z-index: 10;
   padding: 24px var(--padding-main-x-320);
   display: flex;

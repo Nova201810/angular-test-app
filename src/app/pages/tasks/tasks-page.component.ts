@@ -2,6 +2,12 @@ import { Component, OnInit } from '@angular/core';
 
 import { TasksService, Task } from '../../services/tasks/tasks.service';
 import { SaveTaskReturnType } from '../../blocks/task-modal/task-modal.component';
+import { TASK_STATUS_NAMES } from '../../constants/task';
+import { Settings } from '../../@types/settings';
+import { SettingsService } from 'src/app/services/settings/settings.service';
+
+const STATUS_ALL = 'all';
+const STATUS_ALL_LABEL = 'Все';
 
 @Component({
   selector: 'app-tasks',
@@ -10,12 +16,33 @@ import { SaveTaskReturnType } from '../../blocks/task-modal/task-modal.component
 })
 export class TasksPageComponent implements OnInit {
   isModalVisible = false;
-  tasks: Task[] = [];
+  tasks?: Task[];
+  settings?: Settings;
+  statuses;
+  filterStatusValue = STATUS_ALL;
 
-  constructor(private tasksService: TasksService) {}
+  constructor(private tasksService: TasksService, private settingsService: SettingsService) {
+    const filterStatuses = {
+      [STATUS_ALL]: STATUS_ALL_LABEL,
+      ...TASK_STATUS_NAMES,
+    };
+    this.statuses = Object.entries(filterStatuses).map(([value, name]) => ({ value, name }));
+  }
 
   ngOnInit(): void {
-    this.tasks = this.tasksService.getTasks();
+    this.settingsService.getSettings()
+      .subscribe(settings => {
+        this.settings = settings;
+      });
+    this.tasksService.getTasks()
+      .subscribe(tasks => {
+        this.tasks = tasks;
+      });
+  }
+
+  onStatusChange(event: Event) {
+    const { value } = event.target as HTMLSelectElement;
+    this.filterStatusValue = value;
   }
 
   showModal() {

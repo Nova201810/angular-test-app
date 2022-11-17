@@ -1,8 +1,10 @@
 import { Component, Input, Output, EventEmitter, OnInit } from '@angular/core';
 
 import { Task } from '../../services/tasks/tasks.service';
+import { Settings } from '../../@types/settings';
 import { SaveTaskReturnType } from '../task-modal/task-modal.component';
-import { TASK_STATUS, TASK_STATUS_NAME } from '../../constants/task';
+import { TASK_STATUS } from '../..//@types/tasks';
+import { TASK_STATUS_NAMES } from '../../constants/task';
 
 @Component({
   selector: 'app-task',
@@ -11,13 +13,14 @@ import { TASK_STATUS, TASK_STATUS_NAME } from '../../constants/task';
 })
 export class TaskComponent implements OnInit {
   @Input() task!: Task;
+  @Input() showDeleteTaskMessage!: Settings['showDeleteTaskMessage'];
   @Output() updateTask = new EventEmitter<Task>();
   @Output() deleteTask = new EventEmitter<string>();
   isModalVisible = false;
   statuses;
 
   constructor() {
-    this.statuses = Object.entries(TASK_STATUS_NAME).map(([value, name]) => ({ value, name }));
+    this.statuses = Object.entries(TASK_STATUS_NAMES).map(([value, name]) => ({ value, name }));
   }
 
   ngOnInit(): void {}
@@ -40,6 +43,12 @@ export class TaskComponent implements OnInit {
   }
 
   onDelete() {
-    this.deleteTask.emit(this.task.id);
+    let deleteTask = true;
+    if (this.showDeleteTaskMessage) {
+      deleteTask = confirm(`Вы точно хотите удалить задачу "${this.task.title}"?`);
+    }
+    if (deleteTask) {
+      this.deleteTask.emit(this.task.id);
+    }
   }
 }
