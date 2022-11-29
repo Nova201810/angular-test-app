@@ -9,8 +9,8 @@ type TasksInfo = {
 
 @Component({
   selector: 'app-main',
-  templateUrl: './main-page.component.html',
-  styleUrls: ['./main-page.component.css'],
+  template: require('./main-page.component.html'),
+  styles: [require('./main-page.component.css')],
 })
 export class MainPageComponent implements OnInit {
   tasks?: TasksInfo;

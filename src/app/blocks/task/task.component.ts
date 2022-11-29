@@ -8,8 +8,8 @@ import { TASK_STATUS_NAMES } from '../../constants/task';
 
 @Component({
   selector: 'app-task',
-  templateUrl: './task.component.html',
-  styleUrls: ['./task.component.css']
+  template: require('./task.component.html'),
+  styles: [require('./task.component.css')]
 })
 export class TaskComponent implements OnInit {
   @Input() task!: Task;

@@ -9,8 +9,8 @@ export type SaveTaskReturnType = Parameters<TasksService['addTask']>[0];
 
 @Component({
   selector: 'app-task-modal',
-  templateUrl: './task-modal.component.html',
-  styleUrls: ['./task-modal.component.css'],
+  template: require('./task-modal.component.html'),
+  styles: [require('./task-modal.component.css')],
 })
 export class TaskModalComponent implements OnChanges {
   @Input() isModalVisible!: boolean;

@@ -4,15 +4,15 @@ import { TasksService, Task } from '../../services/tasks/tasks.service';
 import { SaveTaskReturnType } from '../../blocks/task-modal/task-modal.component';
 import { TASK_STATUS_NAMES } from '../../constants/task';
 import { Settings } from '../../@types/settings';
-import { SettingsService } from 'src/app/services/settings/settings.service';
+import { SettingsService } from '../../services/settings/settings.service';
 
 const STATUS_ALL = 'all';
 const STATUS_ALL_LABEL = 'Все';
 
 @Component({
   selector: 'app-tasks',
-  templateUrl: './tasks-page.component.html',
-  styleUrls: ['./tasks-page.component.css'],
+  template: require('./tasks-page.component.html'),
+  styles: [require('./tasks-page.component.css')],
 })
 export class TasksPageComponent implements OnInit {
   isModalVisible = false;

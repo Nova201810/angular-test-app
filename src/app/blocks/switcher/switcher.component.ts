@@ -2,8 +2,8 @@ import { Component, Input, Output, EventEmitter } from '@angular/core';
 
 @Component({
   selector: 'app-switcher',
-  templateUrl: './switcher.component.html',
-  styleUrls: ['./switcher.component.css'],
+  template: require('./switcher.component.html'),
+  styles: [require('./switcher.component.css')],
 })
 export class SwitcherComponent {
   @Input() selected!: boolean;

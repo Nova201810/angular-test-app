@@ -5,8 +5,8 @@ import { SettingsService } from '../../services/settings/settings.service';
 
 @Component({
   selector: 'app-settings',
-  templateUrl: './settings-page.component.html',
-  styleUrls: ['./settings-page.component.css']
+  template: require('./settings-page.component.html'),
+  styles: [require('./settings-page.component.css')]
 })
 export class SettingsPageComponent implements OnInit {
   settings?: Settings;

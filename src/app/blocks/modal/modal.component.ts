@@ -4,8 +4,8 @@ import { FOCUSABLE_ELEMENTS_SELECTOR } from '../../constants/common';
 
 @Component({
   selector: 'app-modal',
-  templateUrl: './modal.component.html',
-  styleUrls: ['./modal.component.css'],
+  template: require('./modal.component.html'),
+  styles: [require('./modal.component.css')],
 })
 export class ModalComponent implements OnInit {
   @Input() heading: string = '';

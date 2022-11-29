@@ -1,15 +1,13 @@
 {
   "name": "angular-test-app",
-  "version": "0.0.0",
+  "version": "1.0.0",
   "scripts": {
     "ng": "ng",
-    "start": "ng serve",
-    "build": "ng build",
-    "watch": "ng build --watch --configuration development",
-    "test": "ng test",
+    "start": "webpack serve --static=./dist/ --mode production --open",
+    "build": "webpack --mode production",
     "dev": "concurrently --kill-others \"yarn mock:server\" \"yarn start:proxy\"",
-    "mock:server": "nodemon src/server.js",
-    "start:proxy": "ng serve -o --port 3000 --proxy-config proxy.conf.json"
+    "mock:server": "nodemon server/index.js",
+    "start:proxy": "webpack serve --mode development"
   },
   "private": true,
   "dependencies": {
@@ -21,6 +19,8 @@
     "@angular/platform-browser": "^14.2.0",
     "@angular/platform-browser-dynamic": "^14.2.0",
     "@angular/router": "^14.2.0",
+    "add": "^2.0.6",
+    "core-js": "^3.26.1",
     "rxjs": "~7.5.0",
     "tslib": "^2.3.0",
     "zone.js": "~0.11.4"
@@ -29,18 +29,22 @@
     "@angular-devkit/build-angular": "^14.2.6",
     "@angular/cli": "~14.2.6",
     "@angular/compiler-cli": "^14.2.0",
-    "@types/jasmine": "~4.0.0",
+    "angular2-template-loader": "^0.6.2",
     "body-parser": "^1.20.1",
     "concurrently": "^7.5.0",
     "crypto": "^1.0.1",
+    "css-loader": "^6.7.2",
     "express": "^4.18.2",
-    "jasmine-core": "~4.3.0",
-    "karma": "~6.4.0",
-    "karma-chrome-launcher": "~3.1.0",
-    "karma-coverage": "~2.2.0",
-    "karma-jasmine": "~5.1.0",
-    "karma-jasmine-html-reporter": "~2.0.0",
+    "html-loader": "^4.2.0",
+    "html-webpack-plugin": "^5.5.0",
+    "mini-css-extract-plugin": "^2.7.0",
     "nodemon": "^2.0.20",
-    "typescript": "~4.7.2"
+    "raw-loader": "^4.0.2",
+    "style-loader": "^3.3.1",
+    "ts-loader": "^9.4.1",
+    "typescript": "~4.7.2",
+    "webpack": "^5.75.0",
+    "webpack-cli": "^5.0.0",
+    "webpack-dev-server": "^4.11.1"
   }
 }
